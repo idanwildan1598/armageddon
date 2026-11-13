@@ -23,7 +23,7 @@ function rahasia(): string {
 
 // Password admin (default hanya untuk pengembangan)
 export function sandiAdmin(): string {
-  return process.env.ADMIN_PASSWORD ?? "010598";
+  return process.env.ADMIN_PASSWORD ?? "rahasiaadalahsesuatuyangtidakbolehdiketahuioranglain";
 }
 
 // True bila masih memakai password default (untuk peringatan di panel)
