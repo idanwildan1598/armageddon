@@ -2,7 +2,7 @@
    AUTENTIKASI ADMIN
    Login 1 akun (tanpa database):
    - Password diambil dari variabel lingkungan ADMIN_PASSWORD
-     (file .env.local). Default "010598" hanya untuk
+     (file .env.local). Default "rahasiaadalahsesuatuyangtidakbolehdiketahuioranglain" hanya untuk
      pengembangan lokal — WAJIB diganti sebelum deploy.
    - Sesi disimpan sebagai cookie HTTP-only berisi token
      HMAC-SHA256, sehingga tidak bisa dipalsukan dari browser.
