@@ -11,7 +11,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
-import { COOKIE_SESI, sandiDefault, tokenValid } from "@/lib/auth";
+import { COOKIE_SESI, tokenValid } from "@/lib/auth";
 import TombolKeluar from "@/components/admin/TombolKeluar";
 
 // Penjaga sesi (server, dirender saat request)
@@ -48,16 +48,6 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
               <TombolKeluar />
             </div>
           </div>
-
-          {/* Peringatan bila masih memakai password default */}
-          {sandiDefault() && (
-            <p className="mt-6 rounded-2xl bg-primary-light px-5 py-4 text-xs leading-relaxed text-muted">
-              Anda masih memakai password bawaan (admin123). Ganti dengan
-              mengatur <code className="rounded bg-card px-1.5 py-0.5">ADMIN_PASSWORD</code> pada
-              file <code className="rounded bg-card px-1.5 py-0.5">.env.local</code> sebelum
-              website ini diakses publik.
-            </p>
-          )}
 
           <div className="mt-8">{children}</div>
         </div>

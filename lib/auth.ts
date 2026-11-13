@@ -1,9 +1,10 @@
 /* ============================================================
    AUTENTIKASI ADMIN
    Login 1 akun (tanpa database):
-   - Password diambil dari variabel lingkungan ADMIN_PASSWORD
-     (file .env.local). Default "rahasiaadalahsesuatuyangtidakbolehdiketahuioranglain" hanya untuk
-     pengembangan lokal — WAJIB diganti sebelum deploy.
+   - Password WAJIB diatur lewat variabel lingkungan
+     ADMIN_PASSWORD: di .env.local (lokal) atau Environment
+     Variables (Vercel). TIDAK ADA password bawaan di kode —
+     sehingga tidak ada rahasia yang pernah tertulis di sini.
    - Sesi disimpan sebagai cookie HTTP-only berisi token
      HMAC-SHA256, sehingga tidak bisa dipalsukan dari browser.
    ============================================================ */
@@ -16,22 +17,31 @@ export const COOKIE_SESI = "sesi_admin";
 // Durasi sesi: 7 hari (detik)
 export const DURASI_SESI = 60 * 60 * 24 * 7;
 
-// Kunci rahasia untuk menandatangani token sesi
+// Kunci rahasia untuk menandatangani token sesi (wajib diatur)
 function rahasia(): string {
-  return process.env.AUTH_SECRET ?? "rahasia-dev-ganti-di-env-local";
+  const kunci = process.env.AUTH_SECRET;
+  if (!kunci) {
+    throw new Error(
+      "AUTH_SECRET belum diatur. Isi di file .env.local (lokal) " +
+        "atau Environment Variables (Vercel).",
+    );
+  }
+  return kunci;
 }
 
-// Password admin (default hanya untuk pengembangan)
+// Password admin (wajib diatur, tanpa nilai bawaan)
 export function sandiAdmin(): string {
-  return process.env.ADMIN_PASSWORD ?? "rahasiaadalahsesuatuyangtidakbolehdiketahuioranglain";
+  const sandi = process.env.ADMIN_PASSWORD;
+  if (!sandi) {
+    throw new Error(
+      "ADMIN_PASSWORD belum diatur. Isi di file .env.local (lokal) " +
+        "atau Environment Variables (Vercel).",
+    );
+  }
+  return sandi;
 }
 
-// True bila masih memakai password default (untuk peringatan di panel)
-export function sandiDefault(): boolean {
-  return !process.env.ADMIN_PASSWORD;
-}
-
-// Periksa password yang dikirim user
+// Periksa password yang dikirim user (bandingkan aman, anti timing attack)
 export function sandiBenar(input: string): boolean {
   const a = Buffer.from(input);
   const b = Buffer.from(sandiAdmin());
