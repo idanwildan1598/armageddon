@@ -34,7 +34,7 @@ export default function Navbar() {
             <BookOpen className="size-5" aria-hidden="true" />
           </span>
           <span className="font-semibold text-ink">
-            Website <span className="text-primary-dark">Akhir Zaman</span>
+            Web <span className="text-primary-dark">Akhir Zaman</span>
           </span>
         </Link>
 
