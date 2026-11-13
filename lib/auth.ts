@@ -2,7 +2,7 @@
    AUTENTIKASI ADMIN
    Login 1 akun (tanpa database):
    - Password diambil dari variabel lingkungan ADMIN_PASSWORD
-     (file .env.local). Default "admin123" hanya untuk
+     (file .env.local). Default "010598" hanya untuk
      pengembangan lokal — WAJIB diganti sebelum deploy.
    - Sesi disimpan sebagai cookie HTTP-only berisi token
      HMAC-SHA256, sehingga tidak bisa dipalsukan dari browser.
@@ -23,7 +23,7 @@ function rahasia(): string {
 
 // Password admin (default hanya untuk pengembangan)
 export function sandiAdmin(): string {
-  return process.env.ADMIN_PASSWORD ?? "admin123";
+  return process.env.ADMIN_PASSWORD ?? "010598";
 }
 
 // True bila masih memakai password default (untuk peringatan di panel)
