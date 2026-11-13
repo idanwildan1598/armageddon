@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Aktifkan dark mode berbasis class (html.dark), bukan media query,
+   agar bisa dikendalikan tombol ganti tema + localStorage. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   TEMA WARNA "Biru Telur Asin" (Tailwind CSS v4)
+   Di Tailwind v4, warna kustom didefinisikan lewat @theme,
+   bukan tailwind.config.js. Nama variabel --color-* otomatis
+   menghasilkan utility class, mis. bg-primary, text-muted.
+   ============================================================ */
+@theme {
+  /* Warna utama */
+  --color-primary: #5bc0be; /* biru telur asin */
+  --color-primary-dark: #3a9d9b; /* tombol hover & judul */
+  --color-primary-light: #e6f6f5; /* latar section & kartu */
+
+  /* Latar & teks */
+  --color-background: #f7fcfc;
+  --color-card: #ffffff; /* latar kartu & navbar */
+  --color-ink: #1f3b3a; /* teks utama */
+  --color-muted: #5c7775; /* teks sekunder */
+
+  /* Font dari next/font (lihat app/layout.tsx) */
+  --font-sans: var(--font-poppins);
+  --font-arab: var(--font-amiri);
+}
+
+/* ============================================================
+   TEMA GELAP
+   Utility class seperti bg-background, bg-card, text-ink
+   membaca variabel di atas. Jadi cukup timpa nilainya di
+   dalam html.dark, seluruh UI otomatis ikut berubah.
+   ============================================================ */
+.dark {
+  color-scheme: dark;
+  --color-primary-dark: #7bd6d4; /* aksen judul lebih terang di gelap */
+  --color-primary-light: #10302f; /* latar section & kartu */
+  --color-background: #0a1f1e;
+  --color-card: #0e2726;
+  --color-ink: #e6f4f3;
+  --color-muted: #93b2b0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Transisi warna halus saat berganti tema */
+body,
+header,
+footer,
+.card-transisi {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}

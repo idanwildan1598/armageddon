@@ -1,0 +1,422 @@
+/* ============================================================
+   DATA ARTIKEL
+   Semua konten dakwah disimpan di sini (tanpa database).
+   Untuk menambah artikel, cukup tambahkan objek baru ke array
+   `artikel` mengikuti bentuk (interface) di bawah.
+
+   PENTING — CATATAN VERIFIKASI:
+   Seluruh teks Arab, terjemahan, dan sumber dalil di file ini
+   adalah KERANGKA CONTOH. WAJIB verifikasi terlebih dahulu kepada
+   ustadz, kitab, atau sumber terpercaya (mis. sunnah.com,
+   Quran.com) SEBELUM dipublikasikan ke publik.
+   ============================================================ */
+
+// Kategori artikel beserta nama icon (lucide-react).
+// Icon dipetakan ke komponen di components/KategoriIcon.tsx.
+export interface Kategori {
+  nama: string;
+  icon: string;
+  deskripsi: string;
+}
+
+export const kategoriList: Kategori[] = [
+  {
+    nama: "Akhir Zaman",
+    icon: "Moon",
+    deskripsi: "Tema umum tentang akhir zaman dan sikap Muslim terhadapnya.",
+  },
+  {
+    nama: "Tanda Kiamat",
+    icon: "Hourglass",
+    deskripsi: "Tanda-tanda kecil (sughra) dan besar (kubra) hari kiamat.",
+  },
+  {
+    nama: "Fitnah & Dajjal",
+    icon: "Eye",
+    deskripsi: "Bentuk-bentuk fitnah dan benteng pertahanan dari Dajjal.",
+  },
+  {
+    nama: "Jaga Iman",
+    icon: "Shield",
+    deskripsi: "Cara menjaga iman di tengah godaan zaman.",
+  },
+  {
+    nama: "Ilmu & Adab",
+    icon: "BookOpen",
+    deskripsi: "Menuntut ilmu dan adab yang menuntun ke surga.",
+  },
+  {
+    nama: "Kesiapan & Taubat",
+    icon: "Compass",
+    deskripsi: "Bekal pulang: taubat dan pengelolaan waktu.",
+  },
+];
+
+// Dalil (ayat/hadis) dalam artikel.
+export interface Dalil {
+  arab: string;
+  terjemah: string;
+  sumber: string;
+}
+
+// Isi artikel tersusun sebagai "blok" agar mudah diedit.
+export type BlokIsi =
+  | { jenis: "subJudul"; teks: string } // H2
+  | { jenis: "paragraf"; teks: string } // P
+  | { jenis: "daftar"; butir: string[] } // UL
+  | { jenis: "dalil"; dalil: Dalil }; // Kartu kutipan
+
+export interface Artikel {
+  slug: string;
+  judul: string;
+  kategori: string; // harus sama dengan nama di kategoriList
+  tanggal: string; // format ISO: "YYYY-MM-DD"
+  ringkasan: string;
+  isi: BlokIsi[];
+}
+
+export const artikel: Artikel[] = [
+  {
+    slug: "jika-kiamat-datang-di-tangan-ada-bibit-tanaman",
+    judul: "Jika Kiamat Datang Sementara di Tangan Ada Bibit Tanaman",
+    kategori: "Akhir Zaman",
+    tanggal: "2026-11-01",
+    ringkasan:
+      "Ilmu tentang hari kiamat bukan untuk ditakuti lalu berhenti berdaya, melainkan untuk menumbuhkan semangat berbuat baik hingga detik terakhir.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Banyak orang merasa gentar ketika mendengar pembahasan tentang akhir zaman. Padahal Rasulullah shallallahu alaihi wa sallam mengajarkan sikap yang justru berlawanan dengan rasa putus asa: terus beramal, terus menanam, dan terus memberi manfaat sampai akhir hayat.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Perintah Menanam Bahkan Saat Kiamat Datang",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "إِذَا قَامَتِ السَّاعَةُ وَفِي يَدِ أَحَدِكُمْ فَسِيلَةٌ، فَإِنِ اسْتَطَاعَ أَنْ لَا تَقُومَ حَتَّى يَغْرِسَهَا فَلْيَغْرِسْهَا",
+          terjemah:
+            "Jika hari kiamat datang sementara di tangan salah seorang dari kalian ada bibit tanaman, maka jika ia sanggup agar kiamat itu tidak berjalan hingga ia sempat menanamnya, hendaklah ia menanamnya.",
+          sumber: "HR. Ahmad no. 12902, dinilai shahih oleh Al-Albani",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Hadis ini menunjukkan bahwa seorang mukmin tidak pernah berhenti beramal saleh. Menggunakan waktu untuk kebaikan tetap bernilai selama masa hidup belum berakhir. Tidak ada ruang untuk kelimpungan atau menyerah pada keputusasaan.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Makna Bibit Tanaman dalam Kehidupan Kita",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Bibit tanaman bisa menjadi ibadah rutin yang kita rawat setiap hari.",
+          "Bisa berupa ilmu yang diajarkan kepada anak dan orang di sekitar kita.",
+          "Bisa berupa sedekah, saling membantu, dan memperbaiki akhlak.",
+          "Intinya: setiap kebaikan yang dipandang Allah, sekecil apa pun, layak ditanam hari ini.",
+        ],
+      },
+      {
+        jenis: "paragraf",
+        teks: "Jadi, membicarakan akhir zaman seharusnya membuat kita lebih semangat menanam kebaikan, bukan berhenti beraktivitas. Mari isi hari-hari ini dengan amal yang bisa kita bawa pulang, sebelum waktu yang diberikan benar-benar habis.",
+      },
+    ],
+  },
+  {
+    slug: "tanda-tanda-kiamat-sughra",
+    judul: "Mengenal Tanda-Tanda Kiamat Sughra dan Kubra",
+    kategori: "Tanda Kiamat",
+    tanggal: "2026-10-28",
+    ringkasan:
+      "Para ulama membagi tanda kiamat menjadi tanda kecil (sughra) dan tanda besar (kubra). Berikut penjelasan ringkas beserta dalilnya.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Hari kiamat adalah hari ketika alam semesta berakhir dan seluruh manusia dibangkitkan untuk dihisab. Agar manusia tidak lalai, Allah dan Rasul-Nya memberi tahu tanda-tanda mendekatnya hari tersebut.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Dua Golongan Tanda Kiamat",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Tanda sughra (kecil): terjadi jauh sebelum hari kiamat, seperti hilangnya amanah, ilmu diangkat, dan penjajakan masa oleh pemuda.",
+          "Tanda kubra (besar): kejadian hebat yang muncul mendekat hari kiamat, seperti munculnya Dajjal, turunnya Nabi Isa alaihissalam, dan terbitnya matahari dari barat.",
+        ],
+      },
+      {
+        jenis: "subJudul",
+        teks: "Sepuluh Tanda Besar yang Disebut Rasulullah",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "«تَسْعَةٌ وَعَشْرَةَ يَتَسَاوَرُ بَيْنَ يَدَيِ السَّاعَةِ: الدَّجَّالُ، وَالدُّخَانُ، وَالدَّابَّةُ، وَشُرُوعُ الشَّمْسِ مِنْ مَغْرِبِهَا، وَنُزُولُ عِيسَى ابْنِ مَرْيَمَ، وَيَأْجُوجُ وَمَأْجُوجُ، وَثَلَاثَةُ خُسُوفٍ...»",
+          terjemah:
+            "Sepuluh (tanda besar) akan terjadi menjelang hari kiamat: Dajjal, asap, binatang dabbah, terbitnya matahari dari tempat terbenamnya, turunnya Isa bin Maryam, keluarnya Ya'juj dan Ma'juj, tiga gempa (yang menimpa bumi, barat, dan timur)... lalu asap, Dajjal, dan tiga gempa tersebut.",
+          sumber: "HR. Muslim no. 2901 (ringkas)",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Memahami tanda kiamat menumbuhkan kesiapan, bukan ketakutan berlebihan. Seorang mukmin yang mengetahui tanda-tandanya akan semakin giat menyiapkan bekal: iman, amal, dan taubat.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Sikap Seorang Mukmin",
+      },
+      {
+        jenis: "paragraf",
+        teks: "Ilmu tentang kiamat meneguhkan hati bahwa kehidupan dunia akan berakhir. Karena itu, peruntukkan waktumu untuk hal yang terbaik: ibadah, ilmu yang bermanfaat, dan kebaikan kepada sesama.",
+      },
+    ],
+  },
+  {
+    slug: "hafalan-kahf-pelindung-dajjal",
+    judul: "Hafalan Al-Kahf, Benteng dari Fitnah Dajjal",
+    kategori: "Fitnah & Dajjal",
+    tanggal: "2026-10-20",
+    ringkasan:
+      "Dajjal adalah fitnah terbesar akhir zaman. Rasulullah memberikan benteng sederhana namun ampuh: sepuluh ayat awal Surah Al-Kahf dan doa perlindungan.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Di antara tanda besar kiamat adalah munculnya Dajjal, sosok yang membawa fitnah paling besar bagi manusia. Rasulullah shallallahu alaihi wa sallam memberi bekal perlindungan yang bisa kita mulai sejak hari ini: hafalan Surah Al-Kahf.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Benteng Sepuluh Ayat Awal",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab: "مَنْ حَفِظَ عَشْرًا مِنْ أَوَّلِ سُورَةِ الْكَهْفِ حُفِظَ مِنْ الدَّجَّالِ",
+          terjemah:
+            "Barangsiapa menghafal sepuluh ayat awal dari Surah Al-Kahf, dia akan terlindung dari (fitnah) Dajjal.",
+          sumber: "HR. Muslim no. 809",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Benteng ini terbuka untuk semua orang. Tidak butuh masa bertahun-tahun, cukup tekun mengulang sepuluh ayat pertama Surah Al-Kahf sampai hafal, lalu dirawat dengan pemahaman maknanya.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Doa Perlindungan dari Fitnah",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",
+          terjemah:
+            "Ya Allah, sesungguhnya aku berlindung kepada-Mu dari fitnah kehidupan dan fitnah kematian.",
+          sumber: "HR. Muslim no. 588",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Fitnah Dajjal menyerang dari dua arah: ujian kemiskinan dan kelaparan yang membawa orang pada penyelewengan, serta ujian kemakmuran dan kesenangan yang membuat lupa. Keduanya dijawab dengan benteng iman, ilmu, dan doa.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Langkah Praktis Minggu Ini",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Tentukan satu ayat Al-Kahf untuk dihafal setiap hari selama sepuluh hari.",
+          "Ulangi hafalan saat perjalanan atau sebelum tidur.",
+          "Pahami makna ayat melalui terjemah dan tafsir terpercaya.",
+          "Biasakan doa perlindungan dalam setiap shalat.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "jaga-iman-di-zaman-fitnah",
+    judul: "Jaga Iman di Zaman yang Penuh Fitnah",
+    kategori: "Jaga Iman",
+    tanggal: "2026-10-15",
+    ringkasan:
+      "Menjaga iman di akhir zaman bagaikan menggenggam bara api: butuh ketulusan, keberanian, dan lingkaran teman yang baik.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Iman diuji bukan hanya saat kesulitan, tetapi juga saat kesenangan. Al-Quran menegaskan bahwa ujian adalah jalan yang telah dilalui orang-orang beriman sebelum kita, dan ujian itulah yang memisahkan yang jujur dari yang berdusta.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Ujian Adalah Sunatullah",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "أَحَسِبَ النَّاسُ أَن يُتْرَكُوا أَن يَقُولُوا آمَنَّا وَهُمْ لَا يُفْتَنُونَ ۝ وَلَقَدْ فَتَنَّا الَّذِينَ مِن قَبْلِهِمْ ۖ فَلَيَعْلَمَنَّ اللَّهُ الَّذِينَ صَدَقُوا وَلَيَعْلَمَنَّ الْكَاذِبِينَ",
+          terjemah:
+            "Apakah manusia mengira bahwa mereka akan dibiarkan (saja) mengatakan kami telah beriman, padahal mereka tidak diuji lagi? Dan sesungguhnya Kami telah menguji orang-orang yang sebelum mereka. Maka Allah pasti mengetahui siapa yang benar dan pasti mengetahui siapa yang dusta.",
+          sumber: "QS. Al-Ankabut: 2-3",
+        },
+      },
+      {
+        jenis: "subJudul",
+        teks: "Menggenggam Bara Api",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "يَأْتِي عَلَى النَّاسِ زَمَانٌ الْقَابِضُ عَلَى دِينِهِ كَالْقَابِضِ عَلَى الْجَمْرِ",
+          terjemah:
+            "Akan datang atas manusia suatu zaman, orang yang berpegang pada agamanya bagaikan menggenggam bara api.",
+          sumber: "HR. At-Tirmidzi no. 2269, dinilai shahih oleh Al-Albani",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Gambaran menggenggam bara api mengajarkan dua hal: berpegang teguh membutuhkan kesabaran, dan tetap sanggup menjaga api iman agar tidak padam. Keduanya dilakukan dengan jalan yang ringan jika dibiasakan sejak sekarang.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Tiga Benteng Harian",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Rutinkan shalat tepat waktu, karena shalat adalah pagar iman.",
+          "Lingkungi diri dengan teman yang mengingatkan kepada kebaikan.",
+          "Jaga pandangan, lisan, dan waktu dari hal-hal yang melemahkan hati.",
+        ],
+      },
+      {
+        jenis: "paragraf",
+        teks: "Zaman yang penuh fitnah bukan alasan untuk pasrah. Sebaliknya, ia kesempatan untuk bersinar dengan iman yang terjaga. Mulailah dari kebiasaan kecil hari ini, dan jaga agar tidak terputus.",
+      },
+    ],
+  },
+  {
+    slug: "bekal-ilmu-menjelang-akhir-zaman",
+    judul: "Bekal Ilmu: Jalan Menuju Surga di Tengah Kehidupan",
+    kategori: "Ilmu & Adab",
+    tanggal: "2026-10-08",
+    ringkasan:
+      "Mencari ilmu yang bermanfaat adalah jalan terbuka menuju surga, sekaligus bekal paling aman di zaman yang serba cepat.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Ilmu adalah cahaya. Dengan ilmu, seorang mukmin membedakan haq dan batil, menjaga langkahnya, dan memperbaiki cara ibadahnya. Rasulullah shallallahu alaihi wa sallam menjanjikan kemudahan bagi siapa pun yang menempuh jalan ilmu.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Jalan Ilmu, Jalan Surga",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "وَمَنْ سَلَكَ طَرِيقًا يَبْتَغِي فِيهِ عِلْمًا سَهَّلَ اللهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ",
+          terjemah:
+            "Barangsiapa menempuh jalan untuk mencari ilmu, Allah akan memudahkan baginya jalan menuju surga.",
+          sumber: "HR. Muslim no. 2699",
+        },
+      },
+      {
+        jenis: "subJudul",
+        teks: "Dua Sisi Satu Kepingan",
+      },
+      {
+        jenis: "paragraf",
+        teks: "Ilmu dan adab berjalan beriringan. Ilmu tanpa adab melahirkan kesombongan; adab tanpa ilmu melahirkan kebingungan. Karena itu para ulama mengutamakan belajar adab sebelum dan bersama ilmu.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Kebiasaan Belajar yang Realistis",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Baca satu halaman kitab atau satu terjemah ayat setiap hari.",
+          "Dengarkan kajian ulama terpercaya secara rutin.",
+          "Catat satu pelajaran baru tiap pekan dan terapkan langsung.",
+          "Ajarkan sedikit yang kamu ketahui kepada orang di sekitarmu.",
+        ],
+      },
+      {
+        jenis: "paragraf",
+        teks: "Tidak perlu menunggu waktu luang yang sempurna. Sepekan satu pelajaran, setahun menjadi lima puluh bekal. Mulailah dari yang kecil dan jaga kontinuitasnya.",
+      },
+    ],
+  },
+  {
+    slug: "taubat-sebelum-waktu-habis",
+    judul: "Taubat Sebelum Waktu Habis",
+    kategori: "Kesiapan & Taubat",
+    tanggal: "2026-09-30",
+    ringkasan:
+      "Pintu taubat terbuka selama nyawa belum menggelepar. Jangan menunggu sempurna untuk kembali; kembali itulah jalan menuju kesempurnaan.",
+    isi: [
+      {
+        jenis: "paragraf",
+        teks: "Semua manusia berbuat salah, dan sebaik-baik orang yang berbuat salah adalah yang kembali kepada Allah. Kabar gembiranya: pintu taubat tidak pernah tertutup selama kita masih hidup dengan akal sehat.",
+      },
+      {
+        jenis: "subJudul",
+        teks: "Batas Waktu Taubat",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab: "إِنَّ اللهَ يَقْبَلُ التَّوْبَةَ عَنِ الْعَبْدِ مَا لَمْ يُغَرْغِرْ",
+          terjemah:
+            "Sesungguhnya Allah menerima taubat seorang hamba selama belum menggelepar (yakni: selama nyawa belum mencapai tenggorokan dan jiwa hendak menggelepar).",
+          sumber: "HR. At-Tirmidzi no. 3537, dinilai shahih oleh Al-Albani",
+        },
+      },
+      {
+        jenis: "subJudul",
+        teks: "Rukun Taubat yang Benar",
+      },
+      {
+        jenis: "daftar",
+        butir: [
+          "Berhenti dari perbuatan dosa dengan segera.",
+          "Menyesali perbuatan itu dengan sungguh-sungguh.",
+          "Bertekad untuk tidak mengulanginya.",
+          "Mengembalikan hak orang lain bila dosanya menyangkut orang lain.",
+        ],
+      },
+      {
+        jenis: "subJudul",
+        teks: "Jangan Menunda",
+      },
+      {
+        jenis: "paragraf",
+        teks: "Perasaan 'nanti kalau sudah siap baru bertobat' adalah jebakan, karena tidak ada yang menjamin esok masih menunggu kita. Taubat yang baik justru dimulai hari ini, dengan niat yang tulus dan langkah yang kecil namun konsisten.",
+      },
+      {
+        jenis: "dalil",
+        dalil: {
+          arab:
+            "اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ، وَصِحَّتَكَ قَبْلَ سَقَمِكَ، وَغِنَاكَ قَبْلَ فَقْرِكَ، وَفَرَاغَكَ قَبْلَ شُغْلِكَ، وَحَيَاتَكَ قَبْلَ مَوْتِكَ",
+          terjemah:
+            "Manfaatkanlah lima hal sebelum datang lima hal: masa mudamu sebelum tuamu, sehatmu sebelum sakitmu, kekayaanmu sebelum kemiskinanmu, waktu luangmu sebelum sibukmu, dan hidupmu sebelum matimu.",
+          sumber: "HR. Al-Hakim no. 7846, dinilai shahih oleh Al-Albani",
+        },
+      },
+      {
+        jenis: "paragraf",
+        teks: "Ambil bekal terbaik untuk pulang: taubat hari ini, amal yang konsisten, dan hati yang selalu diingatkan oleh ilmu. Semoga Allah mengabulkan setiap langkah kembalinya kita.",
+      },
+    ],
+  },
+];
+
+// CATATAN PENTING (ulang):
+// Verifikasi SEMUA teks Arab, terjemahan, dan nomor hadis kepada
+// ustadz atau sumber terpercaya sebelum website ini dipublikasikan.
