@@ -27,7 +27,7 @@ export default function SearchBar({ nilai, onUbah, placeholder }: Props) {
         onChange={(e) => onUbah(e.target.value)}
         placeholder={placeholder ?? "Cari artikel..."}
         aria-label="Cari artikel"
-        className="w-full rounded-2xl border border-primary-light bg-card py-3 pl-11 pr-11 text-sm text-ink placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+        className="w-full rounded-full border-0 bg-white/60 py-3 pl-11 pr-11 text-sm text-ink shadow-inner backdrop-blur placeholder:text-muted focus:bg-white/80 focus:outline-none focus:ring-2 focus:ring-primary/40 dark:bg-white/5 dark:focus:bg-white/10"
       />
       {/* Tombol bersihkan, hanya muncul saat ada teks */}
       {nilai && (

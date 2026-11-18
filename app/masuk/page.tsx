@@ -47,7 +47,7 @@ export default function MasukPage() {
     <div className="mx-auto flex max-w-md flex-col px-4 py-24 sm:px-6">
       {/* Ikon + judul */}
       <div className="text-center">
-        <span className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-primary-light">
+        <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-primary-light">
           <Lock className="size-7 text-primary-dark" aria-hidden="true" />
         </span>
         <h1 className="mt-6 text-2xl font-bold text-ink">Masuk Admin</h1>
@@ -57,7 +57,7 @@ export default function MasukPage() {
       </div>
 
       {/* Form login */}
-      <form onSubmit={kirim} className="mt-8 rounded-2xl border border-primary-light bg-card p-6 shadow-sm">
+      <form onSubmit={kirim} className="glass mt-8 rounded-3xl p-6 sm:p-8">
         <label htmlFor="password" className="text-sm font-medium text-ink">
           Password
         </label>
@@ -69,7 +69,7 @@ export default function MasukPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
             autoComplete="current-password"
-            className="w-full rounded-2xl border border-primary-light bg-background py-3 pl-4 pr-11 text-sm text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-full border-0 bg-white/60 py-3 pl-4 pr-11 text-sm text-ink backdrop-blur focus:bg-white/80 focus:outline-none focus:ring-2 focus:ring-primary/40 dark:bg-white/5 dark:focus:bg-white/10"
           />
           {/* Tombol tampil/sembunyikan password */}
           <button

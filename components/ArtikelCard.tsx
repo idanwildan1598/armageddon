@@ -24,7 +24,7 @@ export default function ArtikelCard({ artikel }: Props) {
   return (
     <Link
       href={`/artikel/${artikel.slug}`}
-      className="group flex h-full flex-col rounded-2xl border border-primary-light bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary hover:shadow-md"
+      className="group glass flex h-full flex-col rounded-3xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
     >
       {/* Badge kategori dengan icon */}
       <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-light px-3 py-1 text-xs font-medium text-primary-dark">

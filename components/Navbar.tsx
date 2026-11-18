@@ -26,14 +26,14 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-light bg-card/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-3 z-50 px-4">
+      <nav className="glass-bar mx-auto flex h-14 max-w-4xl items-center justify-between rounded-full px-4 sm:px-5">
         {/* Logo teks + icon */}
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-2xl bg-primary text-white">
-            <BookOpen className="size-5" aria-hidden="true" />
+          <span className="flex size-8 items-center justify-center rounded-full bg-primary text-white">
+            <BookOpen className="size-4.5" aria-hidden="true" />
           </span>
-          <span className="font-semibold text-ink">
+          <span className="text-sm font-semibold text-ink">
             Web <span className="text-primary-dark">Akhir Zaman</span>
           </span>
         </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
             onClick={() => setTerbuka((v) => !v)}
             aria-expanded={terbuka}
             aria-label={terbuka ? "Tutup menu" : "Buka menu"}
-            className="flex size-10 items-center justify-center rounded-xl text-ink transition-colors hover:bg-primary-light md:hidden"
+            className="flex size-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-primary-light md:hidden"
           >
             {terbuka ? (
               <X className="size-5" aria-hidden="true" />
@@ -91,7 +91,7 @@ export default function Navbar() {
 
       {/* Menu mobile (drop-down) */}
       {terbuka && (
-        <ul className="border-t border-primary-light bg-card px-4 py-3 md:hidden">
+        <ul className="glass mx-auto mb-3 max-w-4xl rounded-3xl px-4 py-3 md:hidden">
           {menu.map((item) => (
             <li key={item.href}>
               <Link

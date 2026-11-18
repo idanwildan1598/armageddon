@@ -28,7 +28,7 @@ export default function AdminPage() {
       </div>
 
       {/* Daftar artikel (baris tabel sederhana) */}
-      <ul className="mt-6 divide-y divide-primary-light rounded-2xl border border-primary-light bg-card">
+      <ul className="glass mt-6 divide-y divide-primary-light rounded-3xl">
         {daftar.map((a) => (
           <li key={a.slug} className="flex items-center gap-4 px-5 py-4">
             <div className="min-w-0 flex-1">

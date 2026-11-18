@@ -49,7 +49,7 @@ export default function TentangPage() {
       </section>
 
       {/* ============ TUJUAN ============ */}
-      <section className="mt-12 rounded-2xl bg-primary-light p-6 sm:p-8">
+      <section className="glass mt-12 rounded-3xl p-6 sm:p-8">
         <h2 className="flex items-center gap-2.5 text-xl font-semibold text-primary-dark">
           <Heart className="size-5" aria-hidden="true" />
           Tujuan Kami

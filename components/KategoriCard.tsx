@@ -21,10 +21,10 @@ export default function KategoriCard({ kategori }: Props) {
   return (
     <Link
       href="/artikel"
-      className="group flex h-full flex-col rounded-2xl bg-primary-light p-6 transition-all hover:-translate-y-1 hover:shadow-md"
+      className="group glass flex h-full flex-col rounded-3xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
     >
       {/* Icon kategori di dalam lingkaran putih */}
-      <span className="flex size-12 items-center justify-center rounded-2xl bg-card shadow-sm">
+      <span className="flex size-12 items-center justify-center rounded-full bg-card shadow-sm">
         <KategoriIcon nama={kategori.icon} className="size-6 text-primary-dark" />
       </span>
 

@@ -21,7 +21,7 @@ export default function BerandaPage() {
       <section className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
         <div className="mx-auto max-w-2xl text-center">
           {/* Badge kecil di atas judul */}
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary-light px-4 py-1.5 text-xs font-medium text-primary-dark">
+          <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-primary-dark">
             <Moon className="size-3.5" aria-hidden="true" />
             Bahan Dakwah Ringan
           </span>
@@ -46,7 +46,7 @@ export default function BerandaPage() {
             </Link>
             <Link
               href="/tentang"
-              className="inline-flex items-center gap-2 rounded-full border border-primary-light bg-card px-6 py-3 text-sm font-medium text-primary-dark transition-colors hover:bg-primary-light"
+              className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-dark transition-colors hover:bg-white/70"
             >
               Tentang Kami
               <ArrowRight className="size-4" aria-hidden="true" />
@@ -56,7 +56,7 @@ export default function BerandaPage() {
       </section>
 
       {/* ============ KATEGORI ============ */}
-      <section id="kategori" className="bg-primary-light py-16">
+      <section id="kategori" className="py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex items-end justify-between gap-4">
             <div>

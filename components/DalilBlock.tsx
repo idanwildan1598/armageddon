@@ -13,7 +13,7 @@ interface Props {
 
 export default function DalilBlock({ dalil }: Props) {
   return (
-    <figure className="rounded-2xl bg-primary-light p-6 sm:p-8">
+    <figure className="glass rounded-3xl p-6 sm:p-8">
       {/* Penanda kutipan */}
       <div className="flex items-center gap-2 text-primary-dark">
         <Quote className="size-5" aria-hidden="true" />

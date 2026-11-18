@@ -17,8 +17,8 @@ const tautan = [
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-primary-light bg-card">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <footer className="mt-20 px-4 pb-6 sm:px-6">
+      <div className="glass mx-auto max-w-5xl rounded-3xl p-8">
         <div className="grid gap-10 sm:grid-cols-2">
           {/* Identitas */}
           <div>
@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         {/* Catatan pengingat */}
-        <div className="mt-10 rounded-2xl bg-primary-light px-5 py-4">
+        <div className="glass mt-6 rounded-3xl px-5 py-4">
           <p className="text-xs leading-relaxed text-muted">
             Seluruh dalil pada website ini wajib diverifikasi terlebih
             dahulu kepada ustadz atau sumber terpercaya sebelum
